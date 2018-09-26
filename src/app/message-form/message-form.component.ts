@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Message } from '../message';
+import { DialogflowService } from '../dialogflow.service';
 
 @Component({
   selector: 'app-message-form',
@@ -15,7 +16,7 @@ export class MessageFormComponent implements OnInit {
   @Input('messages')
   private messages: Message[];
 
-  constructor() { }
+  constructor(private dialogFlowService: DialogflowService) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,13 @@ export class MessageFormComponent implements OnInit {
     this.message.timestamp = new Date();
     this.messages.push(this.message);
 
-    this.message = new Message('', 'favicon.ico');
+    this.dialogFlowService.getResponse(this.message.content).subscribe(res => {
+      this.messages.push(
+        new Message(res.result.fulfillment.speech, '../favicon.ico', res.timestamp)
+      );
+    });
+
+    this.message = new Message('', '../favicon.ico');
   }
 
 }

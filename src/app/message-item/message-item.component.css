@@ -1,0 +1,58 @@
+li_odd {
+    color: #777;
+}
+
+li_even {
+    color: blue;
+}
+
+img.avatar {
+    max-width: 100%;
+}
+
+.msgContainer {
+    position: relative;
+}
+
+.msgContainer:after {
+    right: 100%;
+    top: 10%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(0, 177, 255, 0);
+    border-right-color: #00b1ff;
+    border-width: 10px;
+}
+
+.message {
+    background: #00b1ff;
+    min-width: 75px;
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 350px;
+    float: left;
+    border: none;
+    outline: none;
+}
+
+.message p {
+    margin: 0px 0px 10px 0px;
+    color: #ffffff;
+    line-height: normal;
+}
+
+.timeform {
+    float: left;
+    color: #ccc;
+    margin: 5px 5px 0px 0px;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
